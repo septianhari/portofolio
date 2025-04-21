@@ -5,3 +5,67 @@ html {
 body {
   font-family: Poppins;
 }
+
+/* Container for the entire slider */
+.portfolio-slider-container {
+  position: relative;
+  width: 80%;  /* Menyesuaikan lebar slider menjadi lebih kecil */
+  max-width: 1000px; /* Mengatur ukuran maksimum slider */
+  margin: auto; /* Center slider */
+  overflow: hidden;
+}
+
+/* Slider itself */
+.portfolio-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Individual slides */
+.portfolio-slide {
+  min-width: 100%; /* Setiap slide mengambil lebar penuh dari slider */
+  box-sizing: border-box;
+}
+
+/* Style for the images to make them responsive */
+.portfolio-slide img {
+  width: 100%; /* Gambar akan mengikuti lebar slide */
+  height: auto; /* Menjaga rasio gambar tetap proporsional */
+  object-fit: cover; /* Menjaga gambar tidak terdistorsi dan mengisi kontainer */
+  border-radius: 10px; /* Sudut melengkung pada gambar */
+}
+
+/* Style for navigation arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border: none;
+  border-radius: 50%;
+}
+
+/* Left arrow position */
+.left-arrow {
+  left: 10px;
+}
+
+/* Right arrow position */
+.right-arrow {
+  right: 10px;
+}
+
+/* Optional: Add hover effect for the arrows */
+.slider-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Style for the container text (title, labels) */
+.text-center {
+  text-align: center;
+}
