@@ -30,7 +30,7 @@ body {
 /* Style for the images to make them responsive */
 .portfolio-slide img {
   width: 100%; /* Gambar akan mengikuti lebar slide */
-  height: auto; /* Menjaga rasio gambar tetap proporsional */
+  height: 250px;; /* Menjaga rasio gambar tetap proporsional */
   object-fit: cover; /* Menjaga gambar tidak terdistorsi dan mengisi kontainer */
   border-radius: 10px; /* Sudut melengkung pada gambar */
 }
