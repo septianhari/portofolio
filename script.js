@@ -8,6 +8,8 @@ let currentIndex = 0;
 
 // Fungsi untuk tampilkan slide
 function showSlide(index) {
+  if (!slider || slides.length === 0) return;
+
   if (index < 0) {
     currentIndex = slides.length - 1; // balik ke terakhir
   } else if (index >= slides.length) {
@@ -21,15 +23,21 @@ function showSlide(index) {
 }
 
 // Event tombol navigasi
-prevBtn.addEventListener("click", () => {
-  showSlide(currentIndex - 1);
-});
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    showSlide(currentIndex - 1);
+  });
+}
 
-nextBtn.addEventListener("click", () => {
-  showSlide(currentIndex + 1);
-});
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    showSlide(currentIndex + 1);
+  });
+}
 
 // Auto slide tiap 5 detik
-setInterval(() => {
-  showSlide(currentIndex + 1);
-}, 5000);
+if (slider && slides.length > 0) {
+  setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 5000);
+}

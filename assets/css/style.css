@@ -79,16 +79,3 @@ body {
 }
 
 /* Bungkus gambar biar seragam */
-.img-wrapper {
-  width: 100%;
-  aspect-ratio: 16 / 9;   /* Semua gambar pakai rasio 16:9 */
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;      /* Proporsional, crop kalau perlu */
-  display: block;
-}
