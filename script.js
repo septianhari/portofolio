@@ -1,39 +1,35 @@
-// Get all necessary elements
-const slides = document.querySelectorAll('.portfolio-slide');
-const totalSlides = slides.length;
+// Ambil elemen yang dibutuhkan
+const slider = document.querySelector(".portfolio-slider");
+const slides = document.querySelectorAll(".portfolio-slide");
+const prevBtn = document.querySelector(".left-arrow");
+const nextBtn = document.querySelector(".right-arrow");
+
 let currentIndex = 0;
 
-// Get the slider container to change the slide position
-const slider = document.querySelector('.portfolio-slider');
+// Fungsi untuk tampilkan slide
+function showSlide(index) {
+  if (index < 0) {
+    currentIndex = slides.length - 1; // balik ke terakhir
+  } else if (index >= slides.length) {
+    currentIndex = 0; // balik ke pertama
+  } else {
+    currentIndex = index;
+  }
 
-// Function to update the slider position
-function updateSliderPosition() {
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  const offset = -currentIndex * 100;
+  slider.style.transform = `translateX(${offset}%)`;
 }
 
-// Next slide
-function nextSlide() {
-    if (currentIndex < totalSlides - 1) {
-        currentIndex++;
-    } else {
-        currentIndex = 0;
-    }
-    updateSliderPosition();
-}
+// Event tombol navigasi
+prevBtn.addEventListener("click", () => {
+  showSlide(currentIndex - 1);
+});
 
-// Previous slide
-function prevSlide() {
-    if (currentIndex > 0) {
-        currentIndex--;
-    } else {
-        currentIndex = totalSlides - 1;
-    }
-    updateSliderPosition();
-}
+nextBtn.addEventListener("click", () => {
+  showSlide(currentIndex + 1);
+});
 
-// Add event listeners to the navigation arrows
-document.querySelector('.left-arrow').addEventListener('click', prevSlide);
-document.querySelector('.right-arrow').addEventListener('click', nextSlide);
-
-// Auto slide every 5 seconds
-setInterval(nextSlide, 5000);
+// Auto slide tiap 5 detik
+setInterval(() => {
+  showSlide(currentIndex + 1);
+}, 5000);
