@@ -3,6 +3,8 @@ const slider = document.querySelector(".portfolio-slider");
 const slides = document.querySelectorAll(".portfolio-slide");
 const prevBtn = document.querySelector(".left-arrow");
 const nextBtn = document.querySelector(".right-arrow");
+const leftArrow = document.querySelector('.slider-arrow.left-arrow');
+const rightArrow = document.querySelector('.slider-arrow.right-arrow');
 
 let currentIndex = 0;
 
@@ -39,5 +41,20 @@ if (nextBtn) {
 if (slider && slides.length > 0) {
   setInterval(() => {
     showSlide(currentIndex + 1);
-  }, 5000);
+  }, 4000);
 }
+
+let currentSlide = 0;
+
+leftArrow.addEventListener('click', () => {
+
+    currentSlide = Math.max(currentSlide - 1, 0);
+
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+});
+
+rightArrow.addEventListener('click', () => {
+
+    currentSlide = Math.min(currentSlide + 1, slides.length - 1);
+});
