@@ -103,3 +103,20 @@
 })();
 
 
+const btn = document.getElementById("backToTop");
+
+// Tampilkan tombol kalau scroll > 300px
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    btn.classList.add("show");
+    btn.classList.remove("hidden");
+  } else {
+    btn.classList.add("hidden");
+    btn.classList.remove("show");
+  }
+});
+
+// Klik tombol untuk scroll halus ke atas
+btn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
