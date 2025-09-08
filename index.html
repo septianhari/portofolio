@@ -76,10 +76,14 @@
                             CV</button>
                     </a>
                 </div>
-                <div class="flex justify-end md:mr-10 md:mt-1">
-                    <img src="assets/img/11.png" class="md:w-[90%] hidden md:block">
-                </div>
-            </div>
+                <div class="md:grid md:grid-cols-2 my-10">
+                    <div class="mx-auto">
+                      <img src="assets/img/me-jas.png" 
+                           alt="Foto Septian Hari Sabarno" 
+                           class="profile-image">
+                    </div>
+                  </div>
+                  
         </section>
 
         <!-- Social Media -->
@@ -101,10 +105,17 @@
 
         <!-- About Me -->
         <section id="aboutme" class="ml-5">
-            <div class="md:grid md:grid-cols-2 my-10">
-                <div class="mx-auto">
-                    <img src="assets/img/12.png" class="w-[369px]" alt="">
+            <div class="md:grid md:grid-cols-2 items-center gap-8 my-10">
+                <div class="mx-auto about-photo">
+                  <div class="avatar">
+                    <img src="assets/img/me-jas.png" alt="Foto Septian Hari Sabarno" class="avatar-img">
+                  </div>
                 </div>
+                <div class="about-copy">
+                  <!-- isi teks kamu di sini (judul, paragraf, tombol, dsb.) -->
+                </div>
+              </div>
+              
                 <div class="">
                     <p class="text-[#8B8858] text-lg font-bold mt-3 md:mt-0">ABOUT ME</p>
                     <h1 class="font-semibold text-3xl my-3 leading-normal">Introduction About Me <span
@@ -525,6 +536,12 @@
             </div>
         </section>
     </div>
+
+    <button id="backToTop" 
+    class="fixed bottom-6 right-6 bg-[#254336] text-white px-4 py-2 rounded-full shadow-lg hidden z-50">
+    ↑
+    </button>
+
 
     <script src="script.js"></script>
 

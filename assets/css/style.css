@@ -79,3 +79,166 @@ body {
 }
 
 /* Bungkus gambar biar seragam */
+
+/* Halusin transisi, tapi hormati reduced motion */
+.portfolio-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-slider { transition: none; }
+}
+
+/* Fokus yang terlihat pada tombol panah */
+.slider-arrow:focus {
+  outline: 3px solid #DAD3BE;
+  outline-offset: 2px;
+}
+
+/* (Opsional) bayangan panah biar kontras di gambar terang */
+.slider-arrow {
+  box-shadow: 0 10px 15px rgba(0,0,0,.15);
+}
+
+/* (Opsional) dots indikator */
+.slider-dots { display:flex; gap:.5rem; justify-content:center; margin-top:.5rem; }
+.slider-dot { width:8px; height:8px; border-radius:9999px; background:#d1d5db; }
+.slider-dot[aria-current="true"] { background:#254336; }
+
+
+/* Foto profil kece dengan ring animasi */
+.profile-image {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: floatY 6s ease-in-out infinite;
+}
+
+/* Ring gradient berputar */
+.profile-image::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  padding: 6px;
+  background: conic-gradient(from 0deg, #254336, #8B8858, #254336);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  animation: spin 12s linear infinite;
+  z-index: -1;
+}
+
+/* Hover effect */
+.profile-image:hover {
+  transform: scale(1.07) rotate(-2deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Animasi */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Aksesibilitas */
+@media (prefers-reduced-motion: reduce) {
+  .profile-image, .profile-image::after {
+    animation: none !important;
+  }
+}
+
+
+
+
+
+
+/* ====== Avatar dengan ring animasi + float halus ====== */
+.avatar{
+  position: relative;
+  width: clamp(200px, 35vw, 320px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,.2));
+  animation: floatY 6s ease-in-out infinite;
+}
+
+/* Ring gradient yang muter pelan (halus, elegan) */
+.avatar::before{
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #254336, #8B8858, #254336);
+  opacity: .65;
+  /* bikin jadi ring */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+          mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+  animation: spin 12s linear infinite;
+}
+
+/* Gambar bulat, fokus ke atas biar kepala ga kepotong */
+.avatar-img{
+  position: relative;
+  z-index: 1;
+  width: 92%;
+  height: 92%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  background: #fff;
+  border: 4px solid #254336;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+/* Efek interaksi */
+.avatar:hover .avatar-img{
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+/* ====== Reveal animasi untuk teks di kanan ====== */
+.about-copy > *{
+  opacity: 0;
+  transform: translateY(10px);
+  animation: reveal .7s ease forwards;
+}
+.about-copy > *:nth-child(1){ animation-delay: .05s; }
+.about-copy > *:nth-child(2){ animation-delay: .15s; }
+.about-copy > *:nth-child(3){ animation-delay: .25s; }
+/* tambah nth-child kalau elemennya lebih banyak */
+
+/* ====== Keyframes ====== */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes floatY {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+@keyframes reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Aksesibilitas: hormati reduced motion ====== */
+@media (prefers-reduced-motion: reduce){
+  .avatar, .avatar::before, .about-copy > *{
+    animation: none !important;
+    transform: none !important;
+  }
+}
